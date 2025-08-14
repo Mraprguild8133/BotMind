@@ -1,0 +1,24 @@
+# Docker Requirements for AI Assistant Telegram Bot
+# Copy this content to requirements.txt in your Docker environment
+
+# Core web framework
+flask>=3.1.1
+gunicorn>=23.0.0
+
+# AI and Machine Learning services
+google-genai>=1.30.0
+google-cloud-vision>=3.10.2
+
+# Telegram bot library
+python-telegram-bot==21.3
+requests>=2.32.4
+
+# Image processing
+pillow>=11.3.0
+
+# Database support (optional)
+psycopg2-binary>=2.9.10
+flask-sqlalchemy>=3.1.1
+
+# Validation utilities
+email-validator>=2.2.0

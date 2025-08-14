@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  telegram-bot:
+    build: .
+    container_name: telegram-ai-bot
+    ports:
+      - "${RENDER_PORT:-5000}:${RENDER_PORT:-5000}"
+    environment:
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+      - TELEGRAM_BOT_TOKEN=${TELEGRAM_BOT_TOKEN}
+      - GOOGLE_VISION_API_KEY=${GOOGLE_VISION_API_KEY}
+      - BACKGROUNDBG_API_KEY=${BACKGROUNDBG_API_KEY}
+      - RENDER_PORT=${RENDER_PORT:-5000}
+      - WEBHOOK_URL=${WEBHOOK_URL}
+      - SESSION_SECRET=${SESSION_SECRET:-default-secret-change-in-production}
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:${RENDER_PORT:-5000}/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+    volumes:
+      - ./logs:/app/logs
+    networks:
+      - telegram-bot-network
+
+networks:
+  telegram-bot-network:
+    driver: bridge
+
+volumes:
+  logs:
+    driver: local
