@@ -187,7 +187,7 @@ The bot includes comprehensive health monitoring:
 ### Local Development
 ```bash
 # Clone repository
-git clone <repository-url>
+git clone https://github.com/Mraprguild8133/BotMind.git
 cd telegram-ai-bot
 
 # Install dependencies
