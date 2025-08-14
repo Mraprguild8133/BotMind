@@ -31,4 +31,4 @@ HEALTHCHECK --interval=30s --timeout=10s --start-period=30s --retries=3 \
     CMD curl -f http://localhost:${RENDER_PORT:-5000}/health || exit 1
 
 # Start command
-CMD gunicorn --bind 0.0.0.0:${RENDER_PORT:-5000} --workers 1 --timeout 120 main:app
+CMD ["python", "main.py"]
